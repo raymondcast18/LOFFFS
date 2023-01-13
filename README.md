@@ -1,4 +1,4 @@
-# LoF.fSpectra
+# LoFFFS
 Loss-of-Function Frequency Spectra Generation R Package
 This is an R package that can generate site grequency spectra of LoF mutations based on the the functional status of the gene they lie on
 and/or the position of the LoF mutation. This package suggests the isntallation of ggplot2 and scales for the graph generation but is not required
