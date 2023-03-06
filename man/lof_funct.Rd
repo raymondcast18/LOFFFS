@@ -4,12 +4,14 @@
 \alias{lof_funct}
 \title{Count loss of function mutations based on functional status.}
 \usage{
-lof_funct(x, y)
+lof_funct(x, y, z)
 }
 \arguments{
 \item{x}{formatted vcf file}
 
 \item{y}{File path for .csv file}
+
+\item{z}{optional file path for potential mutations that may not be LoF and need further investigation}
 }
 \value{
 data frame with gene name and the LoF mutations within the gene

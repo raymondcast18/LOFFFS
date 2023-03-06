@@ -79,7 +79,7 @@ lof_pos<-function(x, y){
       #  individual[j] = 1
       #}
       if(comp.hom==TRUE||comp.het==TRUE){
-       pos.count = pos.count + 1
+        pos.count = pos.count + 1
       }
       j=j+1
     }
@@ -87,10 +87,10 @@ lof_pos<-function(x, y){
     pos2 = x[i+1, 2]
     pos.check = grepl(pos1, pos2)
     if(pos.check==FALSE){
-    pos.lof.list=append(pos.lof.list, pos.count)
-    pos.list=append(pos.list, pos1)
-    pos.count=0
-    pos1=pos2
+      pos.lof.list=append(pos.lof.list, pos.count)
+      pos.list=append(pos.list, pos1)
+      pos.count=0
+      pos1=pos2
     }
   }
   #L = a list of final sums of LoF mutations

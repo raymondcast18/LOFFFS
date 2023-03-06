@@ -1,20 +1,22 @@
-#'Count loss of function mutations based on functional status.
+#'Count loss of function mutations based on functional status and which specific mutations the user selects.
 #'
-#'This function counts LoF mutations based on functional status and
-#'outputs a df and csv file with the data. This assumes the function load_vcf was run on
+#'This function counts LoF mutations based on functional status except only counting mutations
+#'that the user specifices and outputs a df and csv file with the data. This assumes the function load_vcf was run on
 #'a vcf file and if you use the package to generate a SFS, you assign the output of the function to a variable
 #'in your environment
 #'
 #'@param x formatted vcf file
 #'@param y File path for .csv file
+#'@param mut1 Mutational type as seen in vcf
+#'@param mut2 Optional additional mutational type
+#'@param mut3 Optional additional mutational type
+#'@param mut4 Optional additional mutational type
 #'@param z optional file path for potential mutations that may not be LoF and need further investigation
 #'@return data frame with gene name and the LoF mutations within the gene
 #'@export
-lof_funct<-function(x, y, z){
+lof_select_funct<-function(x, y, mut1, mut2, mut3="N/A,DNE", mut4="N/A,DNA", z){
   ## -----------------------------------------------------------------------------------------------------------------------------------
   #Isolates the gene id in the vcf file
-  maxc<-ncol(x)
-  maxr<-nrow(x)
   i<-1
   j<-8
   #mutlimutant keeps track of mutations for the data set.
@@ -31,17 +33,37 @@ lof_funct<-function(x, y, z){
     klength<-lengths(k)
     LoF.check<-grepl('LOF', k1[[1]][3])
     if(LoF.check==TRUE){
-      x[bug1, j] = k[[1]][5]
-      multimutant<-append(multimutant, k[[1]][2])
-      bug1=bug1+1
+      if(k[[1]][2] == mut1){
+        x[bug1, j] = k[[1]][5]
+        multimutant<-append(multimutant, k[[1]][2])
+        bug1=bug1+1
+      }
+      else if(k[[1]][2]==mut2){
+        x[bug1, j] = k[[1]][5]
+        multimutant<-append(multimutant, k[[1]][2])
+        bug1=bug1+1
+      }
+      else if(k[[1]][2]==mut3){
+        x[bug1, j] = k[[1]][5]
+        multimutant<-append(multimutant, k[[1]][2])
+        bug1=bug1+1
+      }
+      else if(k[[1]][2]==mut4){
+        x[bug1, j] = k[[1]][5]
+        multimutant<-append(multimutant, k[[1]][2])
+        bug1=bug1+1
+      }
+      else{
+        x<-x[-bug1,]
+      }
     }
     else{
       x<-x[-bug1,]
     }
+    rownames(x)<-1:nrow(x)
     i=i+1
   }
-
-
+  View(x)
   ## ---------------------------------------------------------------------------------
 
 
@@ -61,19 +83,22 @@ lof_funct<-function(x, y, z){
   hom<-"1\\|1"
   het<-"0\\|1"
   lof.count<-0
+  maxr<-nrow(x)
   gene2<-0
   m<-1
-  genenum<-1
+  mutant.track<-1
   mutant.check<- c(0, 0)
   non.lof.list <- c()
   #This is the algorithm that iterates through the rows checking for variables lof1 and lof2 in the data and keeping track of LoF mutations per
   #individual will check if lof mut is on same gene for same individual
   #list of genes
   gene.list = c()
+  genenum<-1
   individual = c(rep(0, maxc))
   for(i in 1:maxr){
     j<-10
     gene1<-x[i, 8]
+    pos1<-x[i, 2]
     mutant.check<- c(0, 0)
     #grep checks if we are on a different gene or on the current one with a binary value
     genecheck<-grepl(gene1, gene2)

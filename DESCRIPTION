@@ -1,7 +1,7 @@
-Package: LoF.fSpectra
+Package: LOFFFS
 Type: Package
 Title: Creates Site-Frequency Spectra of Loss-of-Function Mutations
-Version: 0.1.0
+Version: 0.1.1
 Author: Raymond Castillo
 Maintainer: Raymond Castillo <raymond.castillo@student.nmt.edu>
 Description: A package for creating site-frequency specrtra of Loss-of-Function (LoF) mutations 
