@@ -4,3 +4,12 @@ This is an R package that can generate site grequency spectra of LoF mutations b
 and/or the position of the LoF mutation. This package suggests the isntallation of ggplot2 and scales for the graph generation but is not required
 if you require only the raw data. Additionally, this package assumes that the data taken in is a vcf file in the format of the 1001 Arabidopsis 
 TAIR 10 Genome.
+
+#DEPENDENCIES
+<PUT DEPENDENCIES HERE>
+
+#USAGE
+<PUT USAGE INFORMATION HERE>
+
+#EXAMPLE CODE
+<PUT EXAMPLE CODE HERE>
