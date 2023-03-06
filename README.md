@@ -5,11 +5,11 @@ and/or the position of the LoF mutation. This package suggests the isntallation 
 if you require only the raw data. Additionally, this package assumes that the data taken in is a vcf file in the format of the 1001 Arabidopsis 
 TAIR 10 Genome.
 
-#DEPENDENCIES
+# DEPENDENCIES
 <PUT DEPENDENCIES HERE>
 
-#USAGE
+# USAGE
 <PUT USAGE INFORMATION HERE>
 
-#EXAMPLE CODE
+# EXAMPLE CODE
 <PUT EXAMPLE CODE HERE>
