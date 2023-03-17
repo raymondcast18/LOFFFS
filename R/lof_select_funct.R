@@ -1,20 +1,20 @@
 #'Count loss of function mutations based on functional status and which specific mutations the user selects.
 #'
 #'This function counts LoF mutations based on functional status except only counting mutations
-#'that the user specifices and outputs a df and csv file with the data. This assumes the function load_vcf was run on
+#'that the user specifics and outputs a df and csv file with the data. This assumes the function load_vcf was run on
 #'a vcf file and if you use the package to generate a SFS, you assign the output of the function to a variable
 #'in your environment
 #'
-#'@param x formatted vcf file
+#'@param x Formatted vcf file
 #'@param y File path for .csv file
 #'@param mut1 Mutational type as seen in vcf
 #'@param mut2 Optional additional mutational type
 #'@param mut3 Optional additional mutational type
 #'@param mut4 Optional additional mutational type
-#'@param z optional file path for potential mutations that may not be LoF and need further investigation
+#'@param z Optional file path for potential mutations that may not be LoF and need further investigation
 #'@return data frame with gene name and the LoF mutations within the gene
 #'@export
-lof_select_funct<-function(x, y, mut1, mut2, mut3="N/A,DNE", mut4="N/A,DNA", z){
+lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A,DNA", z){
   ## -----------------------------------------------------------------------------------------------------------------------------------
   #Isolates the gene id in the vcf file
   i<-1
@@ -63,7 +63,6 @@ lof_select_funct<-function(x, y, mut1, mut2, mut3="N/A,DNE", mut4="N/A,DNA", z){
     rownames(x)<-1:nrow(x)
     i=i+1
   }
-  View(x)
   ## ---------------------------------------------------------------------------------
 
 

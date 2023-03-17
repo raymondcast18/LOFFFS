@@ -4,10 +4,18 @@
 \alias{lof_select_funct}
 \title{Count loss of function mutations based on functional status and which specific mutations the user selects.}
 \usage{
-lof_select_funct(x, y, mut1, mut2, mut3 = "N/A,DNE", mut4 = "N/A,DNA", z)
+lof_select_funct(
+  x,
+  y,
+  mut1,
+  mut2 = "N/A,DNE",
+  mut3 = "N/A,DNE",
+  mut4 = "N/A,DNA",
+  z
+)
 }
 \arguments{
-\item{x}{formatted vcf file}
+\item{x}{Formatted vcf file}
 
 \item{y}{File path for .csv file}
 
@@ -19,14 +27,14 @@ lof_select_funct(x, y, mut1, mut2, mut3 = "N/A,DNE", mut4 = "N/A,DNA", z)
 
 \item{mut4}{Optional additional mutational type}
 
-\item{z}{optional file path for potential mutations that may not be LoF and need further investigation}
+\item{z}{Optional file path for potential mutations that may not be LoF and need further investigation}
 }
 \value{
 data frame with gene name and the LoF mutations within the gene
 }
 \description{
 This function counts LoF mutations based on functional status except only counting mutations
-that the user specifices and outputs a df and csv file with the data. This assumes the function load_vcf was run on
+that the user specifics and outputs a df and csv file with the data. This assumes the function load_vcf was run on
 a vcf file and if you use the package to generate a SFS, you assign the output of the function to a variable
 in your environment
 }

@@ -16,10 +16,20 @@ lof_pos<-function(x, y){
   maxr<-nrow(x)
   i<-1
   j<-8
+  bug1<-1
   while(i<=maxr){
-    gene<-toString(x[i, j], width=NULL)
+    gene<-toString(x[bug1, j], width=NULL)
+    k1<-strsplit(gene, ';', fixed = TRUE)
     k<-strsplit(gene, '|', fixed = TRUE)
-    x[i, j] = k[[1]][5]
+    klength<-lengths(k)
+    LoF.check<-grepl('LOF', k1[[1]][3])
+    if(LoF.check==TRUE){
+      x[bug1, j] = k[[1]][5]
+      bug1=bug1+1
+    }
+    else{
+      x<-x[-bug1,]
+    }
     i=i+1
   }
 
