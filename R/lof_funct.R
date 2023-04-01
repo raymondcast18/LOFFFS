@@ -74,16 +74,21 @@ lof_funct<-function(x, y, z){
   for(i in 1:maxr){
     j<-10
     gene1<-x[i, 8]
-    mutant.check<- c(0, 0)
+
     #grep checks if we are on a different gene or on the current one with a binary value
     genecheck<-grepl(gene1, gene2)
     if(genecheck==FALSE){
       gene.list=append(gene.list, gene1)
     }
     if(genecheck==FALSE & i!=1){
+      mutant.check[1]=lof.count%%3
+      if(mutant.check[1]==0 && mutant.check[2]!=1){
+        non.lof.list<-append(non.lof.list, gene1)
+      }
       L = append(L, lof.count)
       lof.count=0
       individual = c(rep(0, maxc))
+      mutant.check<- c(0, 0)
       m=m+1
     }
     while(j<=maxc){
@@ -99,17 +104,10 @@ lof_funct<-function(x, y, z){
       j=j+1
     }
     gene2<-x[i, 8]
-    mutant.check[1]=lof.count%%3
-    print(mutant.check[1])
-    codon.check <- grepl(multimutant[genenum], "stop_gained")
-    print(codon.check)
+    codon.check <- grepl(multimutant[i], "stop_gained")
     if(codon.check==TRUE){
       mutant.check[2] = 1
     }
-    if(mutant.check[1]==0 && mutant.check[2]!=1){
-      non.lof.list<-append(non.lof.list, gene1)
-    }
-    genenum=genenum+1
   }
   #L = a list of final sums of LoF mutations
   L = append(L, lof.count)

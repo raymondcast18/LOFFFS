@@ -14,7 +14,7 @@
 #'@param z Optional file path for potential mutations that may not be LoF and need further investigation
 #'@return data frame with gene name and the LoF mutations within the gene
 #'@export
-lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A,DNA", z){
+lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A,DNE", z){
   ## -----------------------------------------------------------------------------------------------------------------------------------
   #Isolates the gene id in the vcf file
   i<-1
@@ -105,6 +105,10 @@ lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A
       gene.list=append(gene.list, gene1)
     }
     if(genecheck==FALSE & i!=1){
+      mutant.check[1]=lof.count%%3
+      if(mutant.check[1]==0 && mutant.check[2]!=1){
+        non.lof.list<-append(non.lof.list, gene1)
+      }
       L = append(L, lof.count)
       lof.count=0
       individual = c(rep(0, maxc))
@@ -123,17 +127,10 @@ lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A
       j=j+1
     }
     gene2<-x[i, 8]
-    mutant.check[1]=lof.count%%3
-    print(mutant.check[1])
-    codon.check <- grepl(multimutant[genenum], "stop_gained")
-    print(codon.check)
+    codon.check <- grepl(multimutant[i], "stop_gained")
     if(codon.check==TRUE){
       mutant.check[2] = 1
     }
-    if(mutant.check[1]==0 && mutant.check[2]!=1){
-      non.lof.list<-append(non.lof.list, gene1)
-    }
-    genenum=genenum+1
   }
   #L = a list of final sums of LoF mutations
   L = append(L, lof.count)

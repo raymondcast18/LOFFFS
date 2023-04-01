@@ -10,7 +10,7 @@ lof_select_funct(
   mut1,
   mut2 = "N/A,DNE",
   mut3 = "N/A,DNE",
-  mut4 = "N/A,DNA",
+  mut4 = "N/A,DNE",
   z
 )
 }
