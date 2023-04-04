@@ -104,4 +104,5 @@ lof_genes_funct<-function(x, y, gt){
   LoF.Funct.df<-data.frame(gene.list, L)
   colnames(LoF.Funct.df)[2]="LoF Count"
   write.csv(LoF.Funct.df, file=y, row.names=FALSE)
+  return(LoF.Funct.df)
 }
