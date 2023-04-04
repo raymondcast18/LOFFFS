@@ -91,6 +91,8 @@ lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A
   #This is the algorithm that iterates through the rows checking for variables lof1 and lof2 in the data and keeping track of LoF mutations per
   #individual will check if lof mut is on same gene for same individual
   #list of genes
+  maxc<-ncol(x)
+  maxr<-nrow(x)
   gene.list = c()
   genenum<-1
   individual = c(rep(0, maxc))

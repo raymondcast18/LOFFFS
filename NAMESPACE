@@ -3,5 +3,6 @@
 export(funct_graph)
 export(load_vcf)
 export(lof_funct)
+export(lof_genes_funct)
 export(lof_pos)
 export(lof_select_funct)
