@@ -15,9 +15,6 @@ funct_graph<-function(data, vcf, outfile){
   maxc<-ncol(vcf)
   #Converting df to double
   L<-(as.numeric(unlist(data[2])))
-  print(L)
-  print(maxc)
-  print(typeof(L))
   freq <- L / (maxc - 8)
   freq = freq[! freq %in% c(0)]
   #bins for data set = b
@@ -28,7 +25,7 @@ funct_graph<-function(data, vcf, outfile){
   pdf(file=outfile, width=6.5, height = 6.5)
   print(
     funct.graph<-ggplot(allele.df, aes(x=freq)) +
-      geom_histogram(bins=b, binwidth = (max(freq)/b), fill="#69b3a2", color="#e9ecef", alpha=0.9, aes(y=stat(count/sum(count)))) +
+      geom_histogram(bins=b, binwidth = (max(freq)/b), fill="#69b3a2", color="#e9ecef", alpha=0.9, aes(y=after_stat(count/sum(count)))) +
       ggtitle("Functional-Class LoF Frequency") +
       theme(panel.background=element_rect(fill='transparent', colour='black'), panel.grid = element_line(colour='grey75'), axis.text=element_text(colour='black'), axis.ticks=element_line(colour='black')) + scale_y_continuous(name="Proportion") + xlab("Allele Frequency")
   )
@@ -50,7 +47,7 @@ pos_graph<-function(data, vcf, outfile){
   pdf(file=outfile, width=6.5, height = 6.5)
   print(
     pos.graph<-ggplot(allele.df, aes(x=freq)) +
-      geom_histogram(bins=b, binwidth = (max(freq)/b), fill="#69b3a2", color="#e9ecef", alpha=0.9, aes(y=stat(count/sum(count)))) +
+      geom_histogram(bins=b, binwidth = (max(freq)/b), fill="#69b3a2", color="#e9ecef", alpha=0.9, aes(y=after_stat(count/sum(count)))) +
       ggtitle("Position Based LoF Frequency") +
       theme(panel.background=element_rect(fill='transparent', colour='black'), panel.grid = element_line(colour='grey75'), axis.text=element_text(colour='black'), axis.ticks=element_line(colour='black')) + scale_y_continuous(name="Proportion") + xlab("Allele Frequency")
   )
