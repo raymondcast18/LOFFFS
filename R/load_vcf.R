@@ -10,6 +10,7 @@ load_vcf<-function(infile){
   tmp_vcf<-tmp_vcf[-(grep("#CHROM",tmp_vcf)+1):-(length(tmp_vcf))]
   vcf_names<-unlist(strsplit(tmp_vcf[length(tmp_vcf)],"\t"))
   names(tmp_vcf_data)<-vcf_names
+  #uncomment this if formatted vcf is desired outside of R in linux
   #save(tmp_vcf_data, file = "tmp_vcf_data")
   return(tmp_vcf_data)
 }
