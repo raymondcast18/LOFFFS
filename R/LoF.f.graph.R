@@ -33,6 +33,16 @@ funct_graph<-function(data, vcf, outfile){
   return(funct.graph)
 }
 
+#'Create frequency spectra
+#'
+#'This function generates a site-frequnecy spectra based on a dataframe of data created
+#'from the lof_funct function.
+#'
+#'@param data df generated from either lof_funct.R or lof_pos.R
+#'@param vcf vcf file from which lof_funct.R was ran on
+#'@param outfile file path for the output of the graph
+#'@return null
+#'@export
 ## -----------------------------------------------------------------------------------------------------------------------------------
 pos_graph<-function(data, vcf, outfile){
   maxc<-ncol(vcf)
