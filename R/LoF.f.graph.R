@@ -52,5 +52,5 @@ pos_graph<-function(data, vcf, outfile){
       theme(panel.background=element_rect(fill='transparent', colour='black'), panel.grid = element_line(colour='grey75'), axis.text=element_text(colour='black'), axis.ticks=element_line(colour='black')) + scale_y_continuous(name="Proportion") + xlab("Allele Frequency")
   )
   dev.off()
-  return(pos_graph)
+  return(pos.graph)
 }
