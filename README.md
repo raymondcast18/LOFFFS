@@ -14,7 +14,7 @@ To install the following commands can be used:
 
 library(devtools)
 
-install_github(raymondcast18/LOFFFS)
+install_github("raymondcast18/LOFFFS")
   
 # USAGE
 <PUT USAGE INFORMATION HERE>
