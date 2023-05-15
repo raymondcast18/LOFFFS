@@ -11,8 +11,10 @@ The packages scales and ggplot2 are recommended for SFS generation however, it i
 # INSTALLATION
 The package devtools is recommended for installation.
 To install the following commands can be used:
+
 library(devtools)
-install_github(raymondcast18/LOFFFS
+
+install_github(raymondcast18/LOFFFS)
   
 # USAGE
 <PUT USAGE INFORMATION HERE>
