@@ -22,7 +22,7 @@ Githubinstall Installation
 
 library(githubinstall)
 
-githubinstall(LOFFFS)
+githubinstall("LOFFFS")
 
 # USAGE
 <PUT USAGE INFORMATION HERE>
