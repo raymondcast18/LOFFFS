@@ -9,13 +9,21 @@ TAIR 10 Genome.
 The packages scales and ggplot2 are recommended for SFS generation however, it is not required.
 
 # INSTALLATION
-The package devtools is recommended for installation.
+The packages devtools or githubinstall for installation.
 To install the following commands can be used:
+
+Devtools Installation
 
 library(devtools)
 
 install_github("raymondcast18/LOFFFS")
-  
+
+Githubinstall Installation
+
+library(githubinstall)
+
+githubinstall(LOFFFS)
+
 # USAGE
 <PUT USAGE INFORMATION HERE>
 
