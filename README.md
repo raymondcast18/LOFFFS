@@ -6,10 +6,13 @@ if you require only the raw data. Additionally, this package assumes that the da
 TAIR 10 Genome.
 
 # DEPENDENCIES
-<PUT DEPENDENCIES HERE>
+The packages scales and ggplot2 are recommended for SFS generation however, it is not required.
 
 # INSTALLATION
-<PUT INSTALLATION INFO HERE>
+The package devtools is recommended for installation.
+To install the following commands can be used:
+library(devtools)
+install_github(raymondcast18/LOFFFS
   
 # USAGE
 <PUT USAGE INFORMATION HERE>
