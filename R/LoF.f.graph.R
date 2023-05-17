@@ -58,7 +58,7 @@ pos_graph<-function(data, vcf, outfile){
   print(
     pos.graph<-ggplot(allele.df, aes(x=freq)) +
       geom_histogram(bins=b, binwidth = (max(freq)/b), fill="#69b3a2", color="#e9ecef", alpha=0.9, aes(y=after_stat(count/sum(count)))) +
-      ggtitle("Position Based LoF Frequency") +
+      ggtitle("Position-Based LoF Frequency") +
       theme(panel.background=element_rect(fill='transparent', colour='black'), panel.grid = element_line(colour='grey75'), axis.text=element_text(colour='black'), axis.ticks=element_line(colour='black')) + scale_y_continuous(name="Proportion") + xlab("Allele Frequency")
   )
   dev.off()

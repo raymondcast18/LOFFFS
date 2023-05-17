@@ -60,12 +60,12 @@ lof_pos<-function(x, y){
   pos2<-0
   #This is the algorithm that iterates through the rows checking for variables lof1 and lof2 in the data and keeping track of LoF mutations per
   #individual will check if lof mut is on same gene for same individual
-  #gene.list = c()
+  gene.list = c()
   pos.list<-c()
   individual = c(rep(0, maxc))
   for(i in 1:maxr){
     j<-10
-    #gene1<-x[i, 8]
+    gene1<-x[i, 8]
     pos1<-x[i, 2]
     #grep checks if we are on a different gene or on the current one with a binary value
     #genecheck<-grepl(gene1, gene2)
@@ -99,6 +99,7 @@ lof_pos<-function(x, y){
     if(pos.check==FALSE){
       pos.lof.list=append(pos.lof.list, pos.count)
       pos.list=append(pos.list, pos1)
+      gene.list=append(gene.list, gene1)
       pos.count=0
       pos1=pos2
     }
@@ -114,9 +115,10 @@ lof_pos<-function(x, y){
   #colnames(LoF.Funct.df)[2]="LoF Count"
   #write.csv(LoF.Funct.df, file=y, row.names=FALSE)
   #print(LoF.Funct.df)
-  LoF.pos.df<-data.frame(pos.list, pos.lof.list)
+  LoF.pos.df<-data.frame(pos.list, pos.lof.list, gene.list)
   colnames(LoF.pos.df)[1]="Position"
   colnames(LoF.pos.df)[2]="LoF Count"
+  colnames(LoF.pos.df)[3]="Gene"
   write.csv(LoF.pos.df, file=y, row.names=FALSE)
   return(LoF.pos.df)
 }
