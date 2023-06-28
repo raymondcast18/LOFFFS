@@ -67,6 +67,7 @@ lof_genes_funct<-function(x, y, gt){
   #list of genes
   gene.list = c()
   individual = c(rep(0, maxc))
+  x<-x[order(as.character(x$INFO)),]
   for(i in 1:maxr){
     j<-10
     gene1<-x[i, 8]
@@ -102,7 +103,8 @@ lof_genes_funct<-function(x, y, gt){
   ##-------------------------------------------------------------------------------------------
 
   LoF.Funct.df<-data.frame(gene.list, L)
-  colnames(LoF.Funct.df)[2]="LoF Count"
-  write.csv(LoF.Funct.df, file=y, row.names=FALSE)
-  return(LoF.Funct.df)
+  funct.aggWG<-aggregate(LoF.Funct.df$L, by=list(gene.list=LoF.Funct.df$gene.list), FUN=sum)
+  colnames(funct.aggWG)[2]="LoF Count"
+  write.csv(funct.aggWG, file=y, row.names=FALSE)
+  return(funct.aggWG)
 }

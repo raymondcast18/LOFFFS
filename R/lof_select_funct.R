@@ -77,6 +77,7 @@ lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A
   #sum used to check for lof1 and lof2 as a binary
   #gene2 checks if code is on a new gene
   #L is a list that will store our counts of LoF mutations
+  x<-x[order(as.character(x$INFO)),]
   L <- c()
   i<-1
   hom<-"1\\|1"
@@ -140,10 +141,11 @@ lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A
   ##-------------------------------------------------------------------------------------------
 
   LoF.Funct.df<-data.frame(gene.list, L)
-  colnames(LoF.Funct.df)[2]="LoF Count"
-  write.csv(LoF.Funct.df, file=y, row.names=FALSE)
+  funct.aggWG<-aggregate(LoF.Funct.df$L, by=list(gene.list=LoF.Funct.df$gene.list), FUN=sum)
+  colnames(funct.aggWG)[2]="LoF Count"
+  write.csv(funct.aggWG, file=y, row.names=FALSE)
   if(missing(z)==FALSE){
     write.csv(non.lof.list, file = z, row.names = FALSE)
   }
-  return(LoF.Funct.df)
+  return(funct.aggWG)
 }
