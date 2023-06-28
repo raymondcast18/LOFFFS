@@ -77,7 +77,7 @@ lof_select_funct<-function(x, y, mut1, mut2="N/A,DNE", mut3="N/A,DNE", mut4="N/A
   #sum used to check for lof1 and lof2 as a binary
   #gene2 checks if code is on a new gene
   #L is a list that will store our counts of LoF mutations
-  x<-x[order(as.character(x$INFO)),]
+  x<-x%>% arrange(INFO)
   L <- c()
   i<-1
   hom<-"1\\|1"
