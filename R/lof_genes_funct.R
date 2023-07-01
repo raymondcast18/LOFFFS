@@ -38,6 +38,7 @@ lof_genes_funct<-function(x, y, gt){
   #filtering data based on user txt file
   #genetext is the desired data provided by user
   genetext <- read.table(gt, sep="\t")
+  x<- x%>% filter(grepl(genetext, INFO))
   x<-x%>% arrange(INFO)
   maxc<-ncol(x)
   maxr<-nrow(x)
@@ -67,7 +68,7 @@ lof_genes_funct<-function(x, y, gt){
   #list of genes
   gene.list = c()
   individual = c(rep(0, maxc))
-  x<-x[order(as.character(x$INFO)),]
+
   for(i in 1:maxr){
     j<-10
     gene1<-x[i, 8]
